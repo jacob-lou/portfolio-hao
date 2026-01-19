@@ -96,3 +96,31 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+
+/* campus stripes overlay */
+.bg-stripes {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+}
+
+.bg-stripes::before {
+  content: "";
+  position: absolute;
+  inset: -80px;
+  background: repeating-linear-gradient(
+    -35deg,
+    rgba(255, 204, 0, 0.10) 0px,
+    rgba(255, 204, 0, 0.10) 10px,
+    rgba(153, 0, 0, 0.12) 10px,
+    rgba(153, 0, 0, 0.12) 22px,
+    transparent 22px,
+    transparent 52px
+  );
+  filter: blur(0.4px);
+  mask-image: radial-gradient(circle at 40% 20%, rgba(0,0,0,1), transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(0,0,0,1), transparent 62%);
+}

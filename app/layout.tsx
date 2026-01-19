@@ -25,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body>
         <div className="bg-texture" />
+        <div className="bg-stripes" />
         <Navbar />
         <main className="mx-auto max-w-6xl px-4 pb-20 pt-8">{children}</main>
         <footer className="mx-auto max-w-6xl px-4 pb-10">

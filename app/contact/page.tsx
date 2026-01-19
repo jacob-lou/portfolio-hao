@@ -77,7 +77,7 @@ export default function ContactPage() {
               </div>
 
               <motion.a
-                href={site.resumePdf.href}
+                href={site.resumePdfs.swe.href}
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl2 border border-usc-gold/35 bg-usc-red/22 px-4 py-3 text-sm shadow-glow"
