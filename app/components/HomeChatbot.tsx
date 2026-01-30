@@ -20,20 +20,39 @@ async function postChat(message: string): Promise<string> {
 export function HomeChatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([
-    { role: "bot", text: "Fight On ✌️ I’m Hao’s site bot. Ask me about projects, resume, or contact." },
+    { role: "bot", text: "Fight On ✌️ I’m Hao’s Trojan Bot. Ask: projects, resume, internships, or contact." },
   ]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
-  const endRef = useRef<HTMLDivElement>(null);
 
+  const endRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [showNudge, setShowNudge] = useState(false);
+
+  // auto scroll to bottom when open + messages change
   useEffect(() => {
     if (!open) return;
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, open]);
 
+  // show a "chatbot exists" nudge on first visit (dismissible)
+  useEffect(() => {
+    const t = window.setTimeout(() => setShowNudge(true), 800);
+    return () => window.clearTimeout(t);
+  }, []);
+
+  // auto focus input when opened
+  useEffect(() => {
+    if (!open) return;
+    const t = window.setTimeout(() => inputRef.current?.focus(), 180);
+    return () => window.clearTimeout(t);
+  }, [open]);
+
   async function send() {
     const text = input.trim();
     if (!text || typing) return;
+
     setInput("");
     setMessages((m) => [...m, { role: "user", text }]);
     setTyping(true);
@@ -48,6 +67,7 @@ export function HomeChatbot() {
 
   return (
     <>
+      {/* Main Chat Window */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -61,10 +81,9 @@ export function HomeChatbot() {
             <div className="flex items-center justify-between border-b border-white/10 bg-usc-red/22 px-4 py-3">
               <div className="flex items-center gap-2">
                 <Bot className="h-5 w-5 text-usc-gold" />
-                <div className="font-serifDisplay text-base tracking-tight text-white/90">
-                  TrojanBot (Home)
-                </div>
+                <div className="font-serifDisplay text-base tracking-tight text-white/90">TrojanBot</div>
               </div>
+
               <button
                 onClick={() => setOpen(false)}
                 className="rounded-xl2 border border-white/10 bg-white/5 p-2 text-white/80 hover:bg-white/10 hover:text-white"
@@ -116,6 +135,7 @@ export function HomeChatbot() {
                 className="flex gap-2"
               >
                 <input
+                  ref={inputRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder='Try: "What’s your tech stack?"'
@@ -130,6 +150,45 @@ export function HomeChatbot() {
                   <Send className="h-4 w-4" />
                 </button>
               </form>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Nudge bubble (shows on first visit) */}
+      <AnimatePresence>
+        {showNudge && !open && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="fixed bottom-24 right-6 z-50 w-[260px]"
+          >
+            <div className="rounded-xl2 border border-white/12 bg-[#0f0505]/80 backdrop-blur-xl shadow-[0_18px_60px_rgba(0,0,0,.45)] p-3">
+              <div className="text-sm text-white/90">
+                <span className="text-usc-gold font-semibold">New:</span> Ask my Trojan Bot anything ✌️
+              </div>
+              <div className="mt-1 text-xs text-white/55">Projects · Resume · Internships · Contact</div>
+              <div className="mt-2 flex gap-2">
+                <button
+                onClick={() => {
+                    setShowNudge(false);
+                    setOpen(true);
+                }}
+                className="rounded-xl2 border border-usc-gold/25 bg-usc-red/25 px-3 py-1.5 text-xs text-usc-gold hover:bg-usc-red/35"
+                >
+                Open
+                </button>
+                <button
+                onClick={() => {
+                    setShowNudge(false);
+                }}
+                className="rounded-xl2 border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 hover:bg-white/10"
+                >
+                Got it
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
