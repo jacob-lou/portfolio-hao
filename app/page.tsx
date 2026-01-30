@@ -6,12 +6,15 @@ import { motion } from "framer-motion";
 import { site, profile } from "./data";
 import { GlassPanel } from "./components/GlassPanel";
 import { pageVariants, staggerVariants, itemVariants } from "./components/MotionPrimitives";
-import { ArrowUpRight, FileDown } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { StatsRow } from "./components/StatsRow";
 import { StickerBadges } from "./components/StickerBadges";
+import { ResumeDropdown } from "./components/ResumeDropdown";
+import { HomeChatbot } from "./components/HomeChatbot";
 
 export default function HomePage() {
   return (
+    <>
     <motion.section variants={pageVariants} initial="hidden" animate="show" className="space-y-8">
       <GlassPanel className="relative overflow-hidden px-6 py-8 sm:px-10 sm:py-12">
         {/* punchy campus glow */}
@@ -24,16 +27,12 @@ export default function HomePage() {
               Fight On! <span className="text-usc-gold">✌️</span>
             </div>
 
-            <motion.a
-              whileHover={{ y: -1 }}
-              whileTap={{ scale: 0.98 }}
-              href={site.resumePdfs.mle.href}
-              className="inline-flex items-center gap-2 rounded-xl2 border border-usc-gold/28 bg-usc-red/18 px-3 py-2 text-sm shadow-[0_0_0_1px_rgba(255,204,0,.10)]"
-            >
-              <FileDown className="h-4 w-4 text-usc-gold" />
-              <span className="text-usc-gold">Resume</span>
-              <ArrowUpRight className="h-4 w-4 text-usc-gold" />
-            </motion.a>
+            <ResumeDropdown
+              items={[
+                { label: site.resumePdfs.swe.label, href: site.resumePdfs.swe.href },
+                { label: site.resumePdfs.mle.label, href: site.resumePdfs.mle.href },
+              ]}
+            />
           </motion.div>
 
           <div className="mt-7 grid gap-6 lg:grid-cols-12 lg:items-start">
@@ -143,28 +142,9 @@ export default function HomePage() {
         </motion.div>
       </GlassPanel>
 
-      {/* Secondary campus vibe panels */}
-      <div className="grid gap-4 sm:grid-cols-2">
-        <GlassPanel className="px-6 py-6">
-          <div className="smallcaps text-xs muted">Campus energy</div>
-          <div className="mt-2 font-serifDisplay text-2xl tracking-tight">
-            Cardinal grit. Gold glow.
-          </div>
-          <p className="mt-3 muted leading-relaxed">
-            A USC-forward palette with jersey-like stripes, warm halos, and glass depth—alive, but never noisy.
-          </p>
-        </GlassPanel>
-
-        <GlassPanel className="px-6 py-6">
-          <div className="smallcaps text-xs muted">Motion discipline</div>
-          <div className="mt-2 font-serifDisplay text-2xl tracking-tight">
-            Smooth entry. Subtle lift. Clear intent.
-          </div>
-          <p className="mt-3 muted leading-relaxed">
-            Every animation is feedback: navigation, hover, and loading states feel responsive and confident.
-          </p>
-        </GlassPanel>
-      </div>
+      
     </motion.section>
+      <HomeChatbot />
+    </>
   );
 }

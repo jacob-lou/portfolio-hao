@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Navbar } from "./components/Navbar";
+import  { Navbar }  from "./components/Navbar";
 import { Inter, Playfair_Display } from "next/font/google";
 
 const sans = Inter({

@@ -6,6 +6,9 @@ import { nav, profile } from "../data";
 import { cn } from "./utils";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { ResumeDropdown } from "../components/ResumeDropdown";
+import { site } from "../data";
+
 
 export function Navbar() {
   const pathname = usePathname();
@@ -72,6 +75,14 @@ export function Navbar() {
                   </Link>
                 );
               })}
+              <div className="ml-1">
+                <ResumeDropdown
+                  items={[
+                    { label: site.resumePdfs.swe.label, href: site.resumePdfs.swe.href },
+                    { label: site.resumePdfs.mle.label, href: site.resumePdfs.mle.href },
+                  ]}
+                />
+              </div>
             </nav>
           </div>
         </div>
