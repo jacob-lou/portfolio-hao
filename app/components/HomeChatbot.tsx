@@ -30,6 +30,12 @@ export function HomeChatbot() {
 
   const [showNudge, setShowNudge] = useState(false);
 
+  const quickPrompts = [
+    "Give me a 20-second intro of Hao.",
+    "What are Hao’s top 3 projects? 1 line each.",
+    "How can I contact Hao? Email + LinkedIn.",
+  ] as const;
+
   // auto scroll to bottom when open + messages change
   useEffect(() => {
     if (!open) return;
@@ -49,8 +55,8 @@ export function HomeChatbot() {
     return () => window.clearTimeout(t);
   }, [open]);
 
-  async function send() {
-    const text = input.trim();
+  async function sendText(raw: string) {
+    const text = raw.trim();
     if (!text || typing) return;
 
     setInput("");
@@ -63,6 +69,10 @@ export function HomeChatbot() {
     } finally {
       setTyping(false);
     }
+  }
+
+  async function send() {
+    await sendText(input);
   }
 
   return (
@@ -95,6 +105,31 @@ export function HomeChatbot() {
 
             {/* Messages */}
             <div className="max-h-[420px] min-h-[280px] overflow-y-auto px-4 py-4 space-y-3">
+              {/* Quick prompts */}
+              <div className="flex flex-wrap gap-2 pb-1">
+                {quickPrompts.map((q) => (
+                  <button
+                    key={q}
+                    type="button"
+                    disabled={typing}
+                    onClick={() => {
+                      if (!open) setOpen(true);
+                      void sendText(q);
+                    }}
+                    className={[
+                      "rounded-xl2 border px-3 py-1.5 text-xs transition",
+                      "border-white/10 bg-white/6 hover:bg-white/10 hover:border-white/16",
+                      "text-white/80 hover:text-white",
+                      "focus:outline-none focus:ring-2 focus:ring-usc-gold/60",
+                      "disabled:opacity-50 disabled:cursor-not-allowed",
+                    ].join(" ")}
+                    aria-label={`Quick ask: ${q}`}
+                  >
+                    <span className="text-usc-gold">✌️</span> {q}
+                  </button>
+                ))}
+              </div>
+
               {messages.map((m, i) => (
                 <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
@@ -138,7 +173,7 @@ export function HomeChatbot() {
                   ref={inputRef}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder='Try: "What’s your tech stack?"'
+                  placeholder="Try a quick chip above — or ask anything."
                   className="flex-1 rounded-xl2 border border-white/12 bg-white/5 px-3 py-2 text-sm text-white/85 placeholder:text-white/35 outline-none focus:border-usc-gold/55"
                 />
                 <button
@@ -172,21 +207,21 @@ export function HomeChatbot() {
               <div className="mt-1 text-xs text-white/55">Projects · Resume · Internships · Contact</div>
               <div className="mt-2 flex gap-2">
                 <button
-                onClick={() => {
+                  onClick={() => {
                     setShowNudge(false);
                     setOpen(true);
-                }}
-                className="rounded-xl2 border border-usc-gold/25 bg-usc-red/25 px-3 py-1.5 text-xs text-usc-gold hover:bg-usc-red/35"
+                  }}
+                  className="rounded-xl2 border border-usc-gold/25 bg-usc-red/25 px-3 py-1.5 text-xs text-usc-gold hover:bg-usc-red/35"
                 >
-                Open
+                  Open
                 </button>
                 <button
-                onClick={() => {
+                  onClick={() => {
                     setShowNudge(false);
-                }}
-                className="rounded-xl2 border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 hover:bg-white/10"
+                  }}
+                  className="rounded-xl2 border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 hover:bg-white/10"
                 >
-                Got it
+                  Got it
                 </button>
               </div>
             </div>
