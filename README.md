@@ -2,7 +2,7 @@
 
 A USC-themed, high-energy personal portfolio built with **Next.js App Router + Tailwind CSS + TypeScript + Framer Motion** — featuring glassmorphism, 3D hover interactions, and a **TrojanBot** chatbot (Gemini-powered, server-side only).
 
-**Live:** https://REPLACE_VERCEL_OR_CUSTOM_DOMAIN
+**Live:** [https://REPLACE_VERCEL_OR_CUSTOM_DOMAIN](https://portfolio-jacobl.vercel.app/)
 
 ---
 
