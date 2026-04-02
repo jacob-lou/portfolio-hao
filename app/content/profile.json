@@ -1,0 +1,24 @@
+{
+  "name": "Hao Lou",
+  "role": "Frontend Engineer · Software Engineer · Applied Math @ USC",
+  "school": "University of Southern California",
+  "location": "Los Angeles, CA",
+  "email": "jacoblou0924@gmail.com",
+  "phone": "(561) 765-0543",
+  "introHeadline": "Fight On! ✌️  Hi, I'm",
+  "introName": "Hao",
+  "introSubline": "I'm Hao Lou, an Applied & Computational Mathematics student at USC (CS minor). I build systems that feel fast, clean, and dependable — from civic platforms in Next.js to ML pipelines like occupational coding at scale and CLAP-powered music retrieval. When I'm not building, I'm usually training, listening to music, or exploring LA — staying curious, staying sharp. ",
+  "photoSrc": "/profile.jpg",
+  "photoAlt": "Hao Lou portrait",
+  "stats": [
+    { "value": "3.85/4.0", "label": "GPA (USC)" },
+    { "value": "Platinum", "label": "USACO Division" },
+    { "value": "Top 30%", "label": "Kaggle AMP® (1,805 teams)" },
+    { "value": "100+", "label": "Users supported (Code the Change)" }
+  ],
+  "links": [
+    { "label": "Email", "href": "mailto:jacoblou0924@gmail.com", "iconId": "mail" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/hao-lou-799a62261", "iconId": "linkedin" },
+    { "label": "GitHub", "href": "https://github.com/jacob-lou", "iconId": "github" }
+  ]
+}

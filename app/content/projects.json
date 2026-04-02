@@ -1,0 +1,75 @@
+[
+  {
+    "title": "Large-Scale Occupational Coding (15M titles → 1,636 categories)",
+    "blurb": "Built a large-scale occupational coding pipeline (pandas/jieba/rapidfuzz + Sentence Transformer embeddings), improving precision & recall by 18% and enabling downstream clustering/active learning.",
+    "tags": ["Python", "pandas", "jieba", "rapidfuzz", "Sentence Transformers", "Active Learning"],
+    "links": [{ "label": "Read More", "href": "/projects" }]
+  },
+  {
+    "title": "LLM-based Cannabis Use Disorder Detection (Early-stage research)",
+    "blurb": "Labeled thousands of Reddit posts with DSM-based guidelines; wrote Python scripts for cleaning, inter-rater reliability checks, and baseline modeling to speed up fine-tuning & evaluation.",
+    "tags": ["LLM", "NLP", "Python", "Data Labeling", "IRR", "Baselines"],
+    "links": [{ "label": "Read More", "href": "/projects" }]
+  },
+  {
+    "title": "VIOLA — Text-to-Music Retrieval for CRM SaaS (MVP)",
+    "blurb": "Architected a text-to-music retrieval pipeline using CLAP embeddings + ChromaDB + emotion-aware reranking; improved search efficiency by 80% and boosted top-10 relevant hit rate by 30%.",
+    "tags": ["PyTorch", "CLAP", "ChromaDB", "Retrieval", "Re-ranking", "Precision@k"],
+    "links": [{ "label": "Read More", "href": "/projects" }]
+  },
+  {
+    "title": "Blue Sky LA Climate Projects Platform",
+    "blurb": "An interactive civic platform that makes Blue Sky LA climate projects visible, searchable, and engaging for the public.",
+    "tags": ["Next.js", "Cloudflare", "Mapbox", "Search UX"],
+    "links": [
+      { "label": "Read More", "href": "/projects" },
+      { "label": "Demo", "href": "https://REPLACE_THIS" },
+      { "label": "GitHub", "href": "https://github.com/REPLACE_THIS" }
+    ]
+  },
+  {
+    "title": "Voices Beyond Assault Anonymous Forum",
+    "blurb": "A secure, anonymous online forum supporting 100+ survivors to share experiences and seek help.",
+    "tags": ["Security UX", "Web App", "Community", "Reliability"],
+    "links": [
+      { "label": "Read More", "href": "/projects" },
+      { "label": "GitHub", "href": "https://github.com/REPLACE_THIS" }
+    ]
+  },
+  {
+    "title": "Intelligent Data Analysis Platform (BI + AIGC)",
+    "blurb": "A full-stack BI platform: upload datasets, generate visualizations and insights, and accelerate analysis with AIGC narratives.",
+    "tags": ["React", "Spring Boot", "Ant Design", "Async", "AIGC"],
+    "links": [
+      { "label": "Read More", "href": "/projects" },
+      { "label": "GitHub", "href": "https://github.com/REPLACE_THIS" }
+    ]
+  },
+  {
+    "title": "Automated Chemistry Lab Workflows",
+    "blurb": "PDF extraction + reporting automation, MSDS expiration alerts, and procurement forecasting to reduce manual effort by 40%.",
+    "tags": ["Python", "pandas", "PyPDF2", "VBA", "Task Scheduler"],
+    "links": [
+      { "label": "Read More", "href": "/projects" },
+      { "label": "GitHub", "href": "https://github.com/REPLACE_THIS" }
+    ]
+  },
+  {
+    "title": "Methanol Synthesis Ratio Optimization",
+    "blurb": "Multi-objective optimization + feature importance to identify operational ratios and suppress side reactions, improving catalyst lifetime.",
+    "tags": ["Optimization", "ML Modeling", "Feature Importance"],
+    "links": [
+      { "label": "Read More", "href": "/projects" },
+      { "label": "GitHub", "href": "https://github.com/REPLACE_THIS" }
+    ]
+  },
+  {
+    "title": "Kaggle AMP® Parkinson's Progression Prediction",
+    "blurb": "Time-series + feature engineering + CV/HPO for MDS-UPDRS progression forecasting; ranked Top 30% among 1,805 teams.",
+    "tags": ["Time-series", "Feature Engineering", "Ensembles", "CV/HPO"],
+    "links": [
+      { "label": "Read More", "href": "/projects" },
+      { "label": "Kaggle", "href": "https://www.kaggle.com/REPLACE_THIS" }
+    ]
+  }
+]
